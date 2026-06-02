@@ -159,6 +159,56 @@ section:last-of-type {
 /* ==========================================================================
    5. DESIGN SECTION (PPT Responsive Box)
    ========================================================================== */
+.design-wrapper {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.design-card {
+    background-color: #ffffff;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+    padding: 32px;
+}
+
+.design-info {
+    font-size: 15px;
+    color: #24292f;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.ppt-frame-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* Rasio Widescreen 16:9 */
+    background-color: #f6f8fa;
+    border: 2px dashed #959da5;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.ppt-notice {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 90%;
+}
+
+.ppt-notice strong {
+    display: block;
+    font-size: 14px;
+    color: #57606a;
+    margin-bottom: 6px;
+}
+
+.ppt-notice p {
+    font-size: 13px;
+    color: #8c959f;
+}
 
 .ppt-frame-container iframe {
     position: absolute;
