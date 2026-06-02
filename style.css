@@ -14,6 +14,7 @@ body {
     line-height: 1.6;
 }
 
+/* Pembatas konten utama agar rapi di tengah halaman */
 .container {
     max-width: 1140px;
     margin: 0 auto;
@@ -65,12 +66,13 @@ nav {
     transition: color 0.2s ease;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.active {
     color: #0969da;
 }
 
 /* ==========================================================================
-   3. STRUKTUR SECTION (Tiap Blok Konten)
+   3. STRUKTUR SECTION (Tiap Blok Halaman Konten)
    ========================================================================== */
 section {
     padding: 80px 0;
@@ -180,6 +182,7 @@ section:last-of-type {
     position: relative;
     width: 100%;
     height: 0;
+    padding-bottom: 56.25%; /* Rasio Widescreen 16:9 */
     background-color: #f6f8fa;
     border: 2px dashed #959da5;
     border-radius: 6px;
@@ -224,7 +227,7 @@ section:last-of-type {
 }
 
 /* ==========================================================================
-   6. PRODUCT SECTION (Toko Map Roblox)
+   6. PRODUCT SECTION (Visual Memory Game Python)
    ========================================================================== */
 .product-showcase {
     background-color: #ffffff;
@@ -254,18 +257,66 @@ section:last-of-type {
     margin-bottom: 16px;
 }
 
+/* Kotak Pembungkus Foto Screenshot Game */
+.product-image-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 24px auto;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #d0d7de;
+    background-color: #eaeef2;
+}
+
+.product-img-fallback {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Kotak Teks Informasi Detail Game */
+.game-info-box {
+    text-align: left;
+    max-width: 600px;
+    margin: 30px auto;
+}
+
+.game-info-box h3 {
+    font-size: 18px;
+    color: #1f2328;
+    margin-bottom: 10px;
+    margin-top: 24px;
+    border-left: 3px solid #0969da;
+    padding-left: 10px;
+}
+
 .product-desc {
-    font-size: 16px;
+    font-size: 15px;
     color: #24292f;
-    margin-bottom: 12px;
 }
 
-.product-subtext {
-    font-size: 14px;
+/* Format Tulisan Kode Monospace (seperti Tkinter, random) */
+.product-desc code {
+    background-color: #afb8c133;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 13px;
+}
+
+/* List Instruksi Cara Bermain */
+.game-instructions {
+    padding-left: 20px;
     color: #57606a;
-    margin-bottom: 28px;
+    font-size: 14px;
 }
 
+.game-instructions li {
+    margin-bottom: 8px;
+}
+
+/* Tombol Aksi Utama */
 .btn-action {
     display: inline-block;
     background-color: #1f2328;
@@ -276,6 +327,7 @@ section:last-of-type {
     font-size: 14px;
     font-weight: 600;
     transition: background-color 0.2s ease;
+    margin-top: 10px;
 }
 
 .btn-action:hover {
@@ -283,7 +335,7 @@ section:last-of-type {
 }
 
 /* ==========================================================================
-   7. FOOTER
+   7. FOOTER (Bagian Paling Bawah)
    ========================================================================== */
 footer {
     text-align: center;
