@@ -1,11 +1,11 @@
 /* ==========================================================================
-   1. PENGATURAN DASAR (RESET & BASE STYLES)
+   1. DASAR
    ========================================================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    font-family: 'Segoe UI', -apple-system, sans-serif;
 }
 
 body {
@@ -14,7 +14,6 @@ body {
     line-height: 1.6;
 }
 
-/* Pembatas konten utama agar rapi di tengah halaman */
 .container {
     max-width: 1140px;
     margin: 0 auto;
@@ -22,7 +21,7 @@ body {
 }
 
 /* ==========================================================================
-   2. NAVIGATION BAR (Menu Navigasi Atas)
+   2. NAVBAR
    ========================================================================== */
 nav {
     background-color: #ffffff;
@@ -45,11 +44,6 @@ nav {
     font-size: 20px;
     font-weight: 700;
     color: #1f2328;
-    letter-spacing: -0.5px;
-}
-
-.logo span {
-    color: #0969da; /* Warna aksen biru modern */
 }
 
 .nav-links {
@@ -63,7 +57,6 @@ nav {
     color: #57606a;
     font-weight: 500;
     font-size: 14px;
-    transition: color 0.2s ease;
 }
 
 .nav-links a:hover,
@@ -72,10 +65,10 @@ nav {
 }
 
 /* ==========================================================================
-   3. STRUKTUR SECTION (Tiap Blok Halaman Konten)
+   3. SECTIONS
    ========================================================================== */
 section {
-    padding: 80px 0;
+    padding: 60px 0;
     border-bottom: 1px solid #d8dee4;
 }
 
@@ -85,25 +78,23 @@ section:last-of-type {
 
 .section-header {
     text-align: center;
-    margin-bottom: 48px;
+    margin-bottom: 40px;
 }
 
 .section-header h1 {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 700;
     color: #1f2328;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 }
 
 .section-header p {
     color: #57606a;
-    font-size: 16px;
-    max-width: 700px;
-    margin: 0 auto;
+    font-size: 15px;
 }
 
 /* ==========================================================================
-   4. HOME SECTION (4 Layer Grid Card)
+   4. HOME GRID (4 LAYER)
    ========================================================================== */
 .grid-home {
     display: grid;
@@ -116,12 +107,6 @@ section:last-of-type {
     border: 1px solid #d0d7de;
     border-radius: 8px;
     overflow: hidden;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(140,149,159,0.15);
 }
 
 .card-image-box {
@@ -137,18 +122,16 @@ section:last-of-type {
 .image-placeholder {
     color: #57606a;
     font-size: 13px;
-    font-weight: 600;
 }
 
 .card-content {
-    padding: 20px;
+    padding: 16px;
 }
 
 .card-content h3 {
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 16px;
     color: #1f2328;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .card-content p {
@@ -157,10 +140,10 @@ section:last-of-type {
 }
 
 /* ==========================================================================
-   5. DESIGN SECTION (PPT Responsive Box)
+   5. DESIGN (DIUBAH KE RASIO VERTIVAL 4:5)
    ========================================================================== */
 .design-wrapper {
-    max-width: 850px;
+    max-width: 500px; /* Dipersempit biar pas sama bentuk tegak 4:5 */
     margin: 0 auto;
 }
 
@@ -168,21 +151,14 @@ section:last-of-type {
     background-color: #ffffff;
     border: 1px solid #d0d7de;
     border-radius: 8px;
-    padding: 32px;
-}
-
-.design-info {
-    font-size: 15px;
-    color: #24292f;
-    margin-bottom: 20px;
-    text-align: center;
+    padding: 20px;
 }
 
 .ppt-frame-container {
     position: relative;
     width: 100%;
     height: 0;
-    padding-bottom: 56.25%; /* Rasio Widescreen 16:9 */
+    padding-bottom: 125%; /* TRICK CSS: Nilai 125% ini yang bikin rasionya pas jadi 4:5 */
     background-color: #f6f8fa;
     border: 2px dashed #959da5;
     border-radius: 6px;
@@ -202,7 +178,7 @@ section:last-of-type {
     display: block;
     font-size: 14px;
     color: #57606a;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
 }
 
 .ppt-notice p {
@@ -219,49 +195,29 @@ section:last-of-type {
     border: none;
 }
 
-.hint-text {
-    font-size: 12px;
-    color: #8c959f;
-    margin-top: 12px;
-    text-align: center;
-}
-
 /* ==========================================================================
-   6. PRODUCT SECTION (Visual Memory Game Python)
+   6. PRODUCT (PYTHON GAME)
    ========================================================================== */
 .product-showcase {
     background-color: #ffffff;
     border: 1px solid #d0d7de;
     border-radius: 8px;
-    padding: 40px;
-    max-width: 760px;
+    padding: 30px;
+    max-width: 700px;
     margin: 0 auto;
     text-align: center;
 }
 
-.product-badge {
-    display: inline-block;
-    background-color: #ddf4ff;
-    color: #0969da;
-    font-size: 12px;
-    font-weight: 600;
-    padding: 4px 12px;
-    border-radius: 20px;
-    margin-bottom: 16px;
-}
-
 .product-showcase h2 {
-    font-size: 26px;
-    font-weight: 700;
+    font-size: 24px;
     color: #1f2328;
     margin-bottom: 16px;
 }
 
-/* Kotak Pembungkus Foto Screenshot Game */
 .product-image-container {
     width: 100%;
-    max-width: 500px;
-    margin: 24px auto;
+    max-width: 450px;
+    margin: 20px auto;
     border-radius: 8px;
     overflow: hidden;
     border: 1px solid #d0d7de;
@@ -272,40 +228,26 @@ section:last-of-type {
     width: 100%;
     height: auto;
     display: block;
-    object-fit: cover;
 }
 
-/* Kotak Teks Informasi Detail Game */
 .game-info-box {
     text-align: left;
     max-width: 600px;
-    margin: 30px auto;
+    margin: 20px auto;
 }
 
 .game-info-box h3 {
-    font-size: 18px;
+    font-size: 16px;
     color: #1f2328;
-    margin-bottom: 10px;
-    margin-top: 24px;
-    border-left: 3px solid #0969da;
-    padding-left: 10px;
+    margin-bottom: 6px;
+    margin-top: 16px;
 }
 
 .product-desc {
-    font-size: 15px;
+    font-size: 14px;
     color: #24292f;
 }
 
-/* Format Tulisan Kode Monospace (seperti Tkinter, random) */
-.product-desc code {
-    background-color: #afb8c133;
-    padding: 2px 4px;
-    border-radius: 4px;
-    font-family: monospace;
-    font-size: 13px;
-}
-
-/* List Instruksi Cara Bermain */
 .game-instructions {
     padding-left: 20px;
     color: #57606a;
@@ -313,20 +255,18 @@ section:last-of-type {
 }
 
 .game-instructions li {
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
-/* Tombol Aksi Utama */
 .btn-action {
     display: inline-block;
     background-color: #1f2328;
     color: #ffffff;
     text-decoration: none;
-    padding: 12px 28px;
+    padding: 10px 24px;
     border-radius: 6px;
     font-size: 14px;
     font-weight: 600;
-    transition: background-color 0.2s ease;
     margin-top: 10px;
 }
 
@@ -335,14 +275,14 @@ section:last-of-type {
 }
 
 /* ==========================================================================
-   7. FOOTER (Bagian Paling Bawah)
+   7. FOOTER
    ========================================================================== */
 footer {
     text-align: center;
-    padding: 40px 20px;
+    padding: 30px 20px;
     color: #8c959f;
     font-size: 13px;
-    border-top: 1px solid #d8dee4;
     background-color: #ffffff;
+    border-top: 1px solid #d8dee4;
     margin-top: 40px;
 }
