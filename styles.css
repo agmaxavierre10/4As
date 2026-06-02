@@ -1,467 +1,297 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
-
-:root {
-  --bg: #1a2826;
-  --surface: rgba(15,26,24,0.82);
-  --surface2: rgba(22,38,35,0.88);
-  --sage: #8faaa8;
-  --sage-light: #b3c9c7;
-  --sage-dim: rgba(143,170,168,0.15);
-  --sage-glow: rgba(143,170,168,0.08);
-  --text: #e8ede9;
-  --muted: #6b8582;
-  --border: rgba(143,170,168,0.14);
-  --border-light: rgba(143,170,168,0.22);
-  --ink: #0d1716;
+/* ==========================================================================
+   1. PENGATURAN DASAR (RESET & BASE STYLES)
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
 }
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
 
 body {
-  background-color: var(--bg);
-  color: var(--text);
-  font-family: 'Crimson Pro', serif;
-  font-weight: 300;
-  min-height: 100vh;
-  overflow-x: hidden;
-  position: relative;
+    background-color: #f6f8fa;
+    color: #24292f;
+    line-height: 1.6;
 }
 
-/* ── LOGO AS FULL PAGE BACKGROUND ── */
-.page-bg {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-.page-bg-img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: min(70vw, 70vh);
-  height: min(70vw, 70vh);
-  object-fit: contain;
-  opacity: 0.055;
-  filter: saturate(0) brightness(2.5);
-  mix-blend-mode: luminosity;
-}
-
-.page-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 60% 60% at 50% 50%, transparent 20%, var(--bg) 75%),
-    linear-gradient(to bottom, var(--bg) 0%, transparent 18%, transparent 82%, var(--bg) 100%),
-    linear-gradient(to right, var(--bg) 0%, transparent 15%, transparent 85%, var(--bg) 100%);
-}
-
-/* ── GRAIN ── */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 998;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-  background-size: 180px;
-  opacity: 0.5;
-  mix-blend-mode: overlay;
-}
-
-/* ── NAV ── */
+/* ==========================================================================
+   2. NAVIGATION BAR (Menu Navigasi Atas)
+   ========================================================================== */
 nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 52px;
-  height: 60px;
-  background: rgba(13,23,22,0.88);
-  backdrop-filter: blur(24px) saturate(1.5);
-  border-bottom: 1px solid var(--border);
+    background-color: #ffffff;
+    border-bottom: 1px solid #d0d7de;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  text-decoration: none;
-  transition: opacity 0.2s;
-}
-.nav-logo:hover { opacity: 0.75; }
-
-.nav-logo-img {
-  width: 30px;
-  height: 30px;
-  object-fit: contain;
-  filter: brightness(0) saturate(100%) invert(72%) sepia(18%) saturate(350%) hue-rotate(140deg) brightness(95%);
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 16px 20px;
 }
 
-.nav-logo-text {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 22px;
-  letter-spacing: 4px;
-  color: var(--sage-light);
-}
-.nav-logo-text .slash { color: var(--muted); margin: 0 1px; }
-
-nav ul { list-style: none; display: flex; }
-
-nav ul li a {
-  text-decoration: none;
-  color: var(--muted);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 0 24px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  border-left: 1px solid var(--border);
-  transition: background 0.15s, color 0.15s;
-  position: relative;
+.logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1f2328;
+    letter-spacing: -0.5px;
 }
 
-nav ul li a::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0;
-  width: 0; height: 2px;
-  background: var(--sage);
-  transition: width 0.28s ease;
+.logo span {
+    color: #0969da; /* Warna aksen biru modern */
 }
 
-nav ul li a:hover { background: var(--sage-glow); color: var(--sage-light); }
-nav ul li a:hover::after { width: 100%; }
-nav ul li.active a { color: var(--sage-light); }
-nav ul li.active a::after { width: 100%; }
-
-/* ── CONTENT ABOVE BG ── */
-.hero, .section, footer { position: relative; z-index: 1; }
-
-/* ── HERO ── */
-.hero {
-  padding: 80px 52px 56px;
-  max-width: 1280px;
-  margin: 0 auto;
-  position: relative;
-  animation: fadeUp 0.7s ease both;
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 24px;
 }
 
-.hero-bg-num {
-  position: absolute;
-  top: 10px; right: 52px;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 320px;
-  color: rgba(143,170,168,0.04);
-  line-height: 1;
-  user-select: none;
-  pointer-events: none;
-  letter-spacing: -8px;
+.nav-links a {
+    text-decoration: none;
+    color: #57606a;
+    font-weight: 500;
+    font-size: 14px;
+    transition: color 0.2s ease;
 }
 
-.hero-inner { position: relative; z-index: 1; }
-
-.hero-eyebrow {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  color: var(--sage);
-  letter-spacing: 3.5px;
-  text-transform: uppercase;
-  margin-bottom: 28px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-.hero-eyebrow::before {
-  content: '';
-  display: inline-block;
-  width: 32px; height: 1px;
-  background: var(--sage);
+.nav-links a:hover {
+    color: #0969da;
 }
 
-.hero h1 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(72px, 11vw, 152px);
-  line-height: 0.90;
-  letter-spacing: 2px;
-  color: var(--text);
-  margin-bottom: 40px;
+/* ==========================================================================
+   3. STRUKTUR SECTION (Tiap Blok Konten)
+   ========================================================================== */
+section {
+    padding: 80px 0;
+    border-bottom: 1px solid #d8dee4;
 }
 
-.hero h1 span { display: block; }
-.hero h1 .highlight { color: var(--sage-light); }
-.hero h1 .outline {
-  -webkit-text-stroke: 1.5px rgba(143,170,168,0.45);
-  color: transparent;
+section:last-of-type {
+    border-bottom: none;
 }
 
-.hero-desc {
-  font-size: 18px;
-  line-height: 1.8;
-  color: var(--muted);
-  max-width: 440px;
-  font-style: italic;
-  border-left: 2px solid var(--border-light);
-  padding-left: 22px;
+.section-header {
+    text-align: center;
+    margin-bottom: 48px;
 }
 
-/* ── TICKER ── */
-.ticker-wrap {
-  overflow: hidden;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 13px 0;
-  margin-bottom: 88px;
-  background: rgba(13,23,22,0.6);
-  backdrop-filter: blur(10px);
+.section-header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1f2328;
+    margin-bottom: 12px;
 }
 
-.ticker {
-  display: flex;
-  animation: ticker 22s linear infinite;
-  white-space: nowrap;
+.section-header p {
+    color: #57606a;
+    font-size: 16px;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
-.ticker-item {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: var(--muted);
-  padding: 0 44px;
-  border-right: 1px solid var(--border);
-  flex-shrink: 0;
-}
-
-.ticker-item.lime { color: var(--sage); }
-
-@keyframes ticker {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-/* ── SECTION ── */
-.section {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 52px 110px;
-  animation: fadeUp 0.7s ease 0.12s both;
-}
-
-.section-grid {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 72px;
-  align-items: start;
-}
-
-.section-aside {
-  position: sticky;
-  top: 80px;
-}
-
-.aside-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 110px;
-  line-height: 1;
-  color: rgba(143,170,168,0.07);
-  display: block;
-  margin-bottom: -4px;
-  letter-spacing: -2px;
-}
-
-.aside-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: var(--sage);
-  display: block;
-  border-top: 1px solid var(--border-light);
-  padding-top: 12px;
-}
-
-.content-body p {
-  font-size: 18px;
-  line-height: 1.95;
-  color: #8fa89e;
-  margin-bottom: 24px;
-}
-.content-body p:last-child { margin-bottom: 0; }
-
-/* ── PULL QUOTE ── */
-.pull-quote {
-  margin: 40px 0;
-  padding: 32px 36px;
-  background: linear-gradient(135deg, rgba(15,30,28,0.9) 0%, rgba(10,22,20,0.95) 100%);
-  backdrop-filter: blur(16px);
-  border: 1px solid var(--border-light);
-  border-left: 3px solid var(--sage);
-  position: relative;
-  overflow: hidden;
-}
-
-.pull-quote::before {
-  content: '"';
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 100px;
-  color: var(--sage);
-  opacity: 0.12;
-  position: absolute;
-  top: -14px; left: 18px;
-  line-height: 1;
-  pointer-events: none;
-}
-
-.pull-quote::after {
-  content: '';
-  position: absolute;
-  bottom: 0; right: 0;
-  width: 100px; height: 100px;
-  background: radial-gradient(circle at bottom right, rgba(143,170,168,0.07), transparent 70%);
-}
-
-.pull-quote p {
-  font-style: italic;
-  font-size: 21px !important;
-  line-height: 1.65 !important;
-  color: var(--text) !important;
-  margin: 0 !important;
-  position: relative;
-  z-index: 1;
-}
-
-/* ── CARDS ── */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--border);
-  margin-top: 52px;
-  border: 1px solid var(--border);
-  overflow: hidden;
+/* ==========================================================================
+   4. HOME SECTION (4 Layer Grid Card)
+   ========================================================================== */
+.grid-home {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
 }
 
 .card {
-  background: var(--surface);
-  padding: 32px 28px;
-  transition: background 0.25s;
-  position: relative;
-  overflow: hidden;
+    background-color: #ffffff;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: radial-gradient(ellipse at top left, rgba(143,170,168,0.07), transparent 60%);
-  opacity: 0;
-  transition: opacity 0.3s;
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(140,149,159,0.15);
 }
 
-.card::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0;
-  width: 0; height: 2px;
-  background: var(--sage);
-  transition: width 0.35s ease;
+.card-image-box {
+    width: 100%;
+    height: 160px;
+    background-color: #eaeef2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #d0d7de;
 }
 
-.card:hover { background: var(--surface2); }
-.card:hover::before { opacity: 1; }
-.card:hover::after { width: 100%; }
-
-.card-tag {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--sage);
-  margin-bottom: 16px;
-  display: block;
-  opacity: 0.85;
+.image-placeholder {
+    color: #57606a;
+    font-size: 13px;
+    font-weight: 600;
 }
 
-.card h3 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 28px;
-  letter-spacing: 1.5px;
-  color: var(--text);
-  margin-bottom: 12px;
+.card-content {
+    padding: 20px;
 }
 
-.card p {
-  font-size: 15px !important;
-  line-height: 1.75 !important;
-  color: var(--muted) !important;
-  margin: 0 !important;
+.card-content h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1f2328;
+    margin-bottom: 8px;
 }
 
-/* ── FOOTER ── */
+.card-content p {
+    font-size: 14px;
+    color: #57606a;
+}
+
+/* ==========================================================================
+   5. DESIGN SECTION (PPT Responsive Box)
+   ========================================================================== */
+.design-wrapper {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.design-card {
+    background-color: #ffffff;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+    padding: 32px;
+}
+
+.design-info {
+    font-size: 15px;
+    color: #24292f;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.ppt-frame-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* Rasio Widescreen 16:9 */
+    background-color: #f6f8fa;
+    border: 2px dashed #959da5;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.ppt-notice {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 90%;
+}
+
+.ppt-notice strong {
+    display: block;
+    font-size: 14px;
+    color: #57606a;
+    margin-bottom: 6px;
+}
+
+.ppt-notice p {
+    font-size: 13px;
+    color: #8c959f;
+}
+
+.ppt-frame-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.hint-text {
+    font-size: 12px;
+    color: #8c959f;
+    margin-top: 12px;
+    text-align: center;
+}
+
+/* ==========================================================================
+   6. PRODUCT SECTION (Toko Map Roblox)
+   ========================================================================== */
+.product-showcase {
+    background-color: #ffffff;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+    padding: 40px;
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.product-badge {
+    display: inline-block;
+    background-color: #ddf4ff;
+    color: #0969da;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+}
+
+.product-showcase h2 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1f2328;
+    margin-bottom: 16px;
+}
+
+.product-desc {
+    font-size: 16px;
+    color: #24292f;
+    margin-bottom: 12px;
+}
+
+.product-subtext {
+    font-size: 14px;
+    color: #57606a;
+    margin-bottom: 28px;
+}
+
+.btn-action {
+    display: inline-block;
+    background-color: #1f2328;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.btn-action:hover {
+    background-color: #0969da;
+}
+
+/* ==========================================================================
+   7. FOOTER
+   ========================================================================== */
 footer {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 28px 52px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-top: 1px solid var(--border);
-}
-
-.footer-left {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.footer-logo-img {
-  width: 20px;
-  height: 20px;
-  object-fit: contain;
-  filter: brightness(0) saturate(100%) invert(72%) sepia(18%) saturate(350%) hue-rotate(140deg) brightness(95%);
-  opacity: 0.4;
-}
-
-footer p {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: var(--muted);
-  letter-spacing: 1.5px;
-}
-
-.footer-sig {
-  font-style: italic;
-  font-size: 15px;
-  color: var(--sage);
-  opacity: 0.75;
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(18px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@media (max-width: 900px) {
-  .section-grid { grid-template-columns: 1fr; gap: 24px; }
-  .section-aside { position: static; }
-  .aside-num { font-size: 80px; }
-}
-
-@media (max-width: 720px) {
-  nav { padding: 0 20px; }
-  .hero { padding: 60px 20px 40px; }
-  .section { padding: 0 20px 80px; }
-  .cards { grid-template-columns: 1fr; }
-  .hero-bg-num { font-size: 200px; right: 20px; }
-  footer { flex-direction: column; gap: 8px; text-align: center; padding: 24px 20px; }
+    text-align: center;
+    padding: 40px 20px;
+    color: #8c959f;
+    font-size: 13px;
+    border-top: 1px solid #d8dee4;
+    background-color: #ffffff;
+    margin-top: 40px;
 }
