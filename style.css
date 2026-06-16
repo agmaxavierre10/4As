@@ -129,8 +129,12 @@ section:last-of-type {
 }
 
 .design-wrapper {
-    max-width: 500px; /* Dipersempit biar pas sama bentuk tegak 4:5 */
+    max-width: 1040px;
     margin: 0 auto;
+    display: flex;
+    gap: 2em;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .design-card {
@@ -138,6 +142,9 @@ section:last-of-type {
     border: 1px solid #d0d7de;
     border-radius: 8px;
     padding: 20px;
+    flex: 1;
+    min-width: 280px;
+    max-width: 480px;
 }
 
 .ppt-frame-container {
